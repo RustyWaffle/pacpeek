@@ -5,13 +5,22 @@ Pacpeek is a small CLI tool, that is completely unnecessary, its just way cooler
 It's compatible on every OS, ye i'm not joking, try it out!
 
 ## Installation
-
+### Basic
 ```bash
 git clone https://github.com/RustyWaffle/pacpeek
 cd pacpeek
 cargo build --release
 ```
-
+### Local
+```bash
+git clone https://github.com/RustyWaffle/pacpeek
+cd pacpeek
+sudo pacman -U pacpeek-0.1.0-1-x86_64.pkg.tar.zst
+```
+### AUR
+```bash
+yay -S pacpeek
+```
 ## Usage
 
 ```
