@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RustyWaffle/pacpeek/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('80fd4ad0a89021d969e011474ed7524e08453dfc1a87ba9ef703448d30310677')
 
 build() {
     cd "$pkgname-$pkgver"
