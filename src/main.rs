@@ -11,13 +11,19 @@ fn main() ->io::Result<()> {
 
         Some(name) => name,
         None => {
-        println!("Usage: cargo run <package>");
+        println!("Usage: pacpeek <package>");
 
         return Ok(()); 
         }
     };
 
-    let paths = fs::read_dir("/var/lib/pacman/local/").unwrap();
+    let paths = match fs::read_dir("/var/lib/pacman/local/") {
+        Ok(paths) => paths,
+        Err(_) => {
+            println!("Nice try Windows user, or a non-pacman user");
+            return Ok(());
+        }
+    };
 
     for entry in paths {
         let entry = entry.unwrap();
@@ -25,30 +31,26 @@ fn main() ->io::Result<()> {
 
         if name.to_string_lossy().starts_with(&package) {
 
-            //join
             let fullpath = entry.path().join("desc");
 
-            //open
             let mut file = File::open(fullpath)?;
 
-            //init string
             let mut content: String = String::new();
 
-            //read
             file.read_to_string(&mut content)?;
 
-            //love picky :)
-            picky(&content);
+            trimming(&content);
 
-            //kill that shi
             break;
         }
     }
     Ok(())
 }
 
-fn picky(content: &str) {
+fn trimming(content: &str) {
     let mut lines = content.lines();
+
+    println!("_________________________________");
 
     while let Some(line) = lines.next() {
 
@@ -56,6 +58,7 @@ fn picky(content: &str) {
 
             let trimmed_line = line.trim_matches('%');
             let value = lines.next().unwrap_or("");
+            
 
             if trimmed_line == "SIZE"{
 
@@ -78,5 +81,7 @@ fn picky(content: &str) {
             }
         }
     }
+
+    println!("_________________________________");
 
 }
