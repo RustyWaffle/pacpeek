@@ -1,6 +1,6 @@
 # Maintainer: RustyWaffle <rustywaffle@seznam.cz>
 pkgname=pacpeek
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A small CLI tool that is completely unnecessary, but way cooler than pacman -Qi"
 arch=('x86_64')

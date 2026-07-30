@@ -42,6 +42,7 @@ fn main() ->io::Result<()> {
             trimming(&content);
 
             break;
+            
         }
     }
     Ok(())
