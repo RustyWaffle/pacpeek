@@ -1,0 +1,10 @@
+[package]
+name = "pacpeek"
+version = "0.1.1"
+edition = "2024"
+
+[profile.release]
+strip = true
+
+[dependencies]
+chrono = "0.4.45"
